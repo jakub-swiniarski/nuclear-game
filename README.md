@@ -1,2 +1,2 @@
 # nuclear-game
-tak
+bob i pan pole
