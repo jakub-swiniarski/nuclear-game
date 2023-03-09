@@ -10,8 +10,8 @@ public class Floor {
 
     public Floor(){
         rect=new Rectangle();
-        rect.width=100;
-        rect.height=100;
+        rect.width=160;
+        rect.height=160;
         rect.x=9999;
         rect.y=9999;
     }
