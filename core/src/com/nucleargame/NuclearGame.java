@@ -21,6 +21,7 @@ public class NuclearGame extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(player.img, player.rect.x, player.rect.y);
 		batch.end();
+		player.checkForInput();
 	}
 	
 	@Override

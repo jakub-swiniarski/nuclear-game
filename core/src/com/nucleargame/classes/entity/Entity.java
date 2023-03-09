@@ -8,13 +8,12 @@ public class Entity {
     public Rectangle rect;
     public Texture img;
     public int hp;
+    public int movingSpeed;
 
     public Entity(){
         rect=new Rectangle();
         rect.x=9999;
         rect.y=9999;
-    }
-    public void walkingAnimation(){
-
+        movingSpeed=0;
     }
 }
