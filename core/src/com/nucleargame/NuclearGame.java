@@ -19,7 +19,7 @@ public class NuclearGame extends ApplicationAdapter {
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 	BitmapFont font24;
 	Player player;
-	Grass grass;
+	Grass[][] grass = new Grass[20][20];
 	OrthographicCamera worldCam;
 	World world;
 	Stage stage;
@@ -30,7 +30,13 @@ public class NuclearGame extends ApplicationAdapter {
 		worldCam = new OrthographicCamera(1600,900);
 		worldCam.position.set(0,0, 0);
 		player=new Player();
-		grass=new Grass();
+		for(int i=0; i<20; i++) {
+			for(int j=0; j<20; j++) {
+				grass[i][j]=new Grass();
+				grass[i][j].rect.x=i*grass[i][j].rect.width-1420;
+				grass[i][j].rect.y=j*grass[i][j].rect.height-1300;
+			}
+		}
 
 		stage = new Stage();
 		world = new World(new Vector2(0,0),false);
@@ -51,7 +57,11 @@ public class NuclearGame extends ApplicationAdapter {
 
 		//affected by light
 		batch.begin();
-		batch.draw(grass.img, grass.rect.x, grass.rect.y);
+		for(int i=0; i<20; i++) {
+			for(int j=0; j<20; j++) {
+				batch.draw(grass[i][j].img,grass[i][j].rect.x,grass[i][j].rect.y);
+			}
+		}
 		batch.draw(player.img, player.rect.x, player.rect.y);
 		batch.end();
 
@@ -68,10 +78,14 @@ public class NuclearGame extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		player.img.dispose();
-		grass.img.dispose();
 		generator.dispose();
 		font24.dispose();
 		world.dispose();
 		stage.dispose();
+		for(int i=0; i<20; i++) {
+			for(int j=0; j<20; j++) {
+				grass[i][j].img.dispose();
+			}
+		}
 	}
 }
