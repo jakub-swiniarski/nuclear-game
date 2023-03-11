@@ -9,7 +9,7 @@ public class Player extends Entity{
     public OrthographicCamera cam;
     public Player(){
         hp=100;
-        img = new Texture(Gdx.files.internal("player.png"));
+        img = new Texture(Gdx.files.internal("player/playerD.png"));
         rect.width=180;
         rect.height=300;
         rect.x=0;
