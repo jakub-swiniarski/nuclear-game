@@ -12,7 +12,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.nucleargame.classes.entity.Player;
-import com.nucleargame.classes.floor.Grass;
+import com.nucleargame.classes.tiles.Grass;
 
 public class NuclearGame extends ApplicationAdapter {
 	SpriteBatch batch;

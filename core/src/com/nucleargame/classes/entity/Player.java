@@ -27,7 +27,7 @@ public class Player extends Entity{
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             rect.x -= movingSpeed * Gdx.graphics.getDeltaTime();
             frameDelay++;
-            if(frameDelay%3==0) {
+            if(frameDelay%5==0) {
                 frameCount++;
                 if(frameCount>=3) frameCount=0;
                 img=walkingL[frameCount];
@@ -36,7 +36,7 @@ public class Player extends Entity{
         else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)  && !Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             rect.x += movingSpeed * Gdx.graphics.getDeltaTime();
             frameDelay++;
-            if(frameDelay%3==0) {
+            if(frameDelay%5==0) {
                 frameCount++;
                 if(frameCount>=3) frameCount=0;
                 img=walkingR[frameCount];
@@ -46,7 +46,7 @@ public class Player extends Entity{
             rect.y += movingSpeed * Gdx.graphics.getDeltaTime();
             if(!(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))) {
                 frameDelay++;
-                if(frameDelay%3==0) {
+                if(frameDelay%5==0) {
                     frameCount++;
                     if(frameCount>=3) frameCount=0;
                     img=walkingU[frameCount];
@@ -57,7 +57,7 @@ public class Player extends Entity{
             rect.y -= movingSpeed * Gdx.graphics.getDeltaTime();
             if(!(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))){
                 frameDelay++;
-                if(frameDelay%3==0) {
+                if(frameDelay%5==0) {
                     frameCount++;
                     if(frameCount>=3) frameCount=0;
                     img=walkingD[frameCount];
