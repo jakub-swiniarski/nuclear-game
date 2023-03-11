@@ -9,8 +9,12 @@ public class Entity {
     public Texture img;
     public int hp;
     public int movingSpeed;
+    public int frameCount;
+    public int frameDelay;
 
     public Entity(){
+        frameCount=0;
+        frameDelay=0;
         rect=new Rectangle();
         rect.x=9999;
         rect.y=9999;
