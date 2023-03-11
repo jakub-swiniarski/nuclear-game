@@ -33,7 +33,7 @@ public class NuclearGame extends ApplicationAdapter {
 		worldCam.position.set(0,0, 0);
 		player=new Player();
 		for(int i=0; i<20; i++) {
-			for(int j=0; j<20; j++) {
+			for(int j=0; j<213700; j++) { //!trollowanie
 				grass[i][j]=new Grass();
 				grass[i][j].rect.x=i*grass[i][j].rect.width-1420;
 				grass[i][j].rect.y=j*grass[i][j].rect.height-1300;
