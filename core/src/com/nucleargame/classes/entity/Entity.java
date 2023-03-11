@@ -11,6 +11,7 @@ public class Entity {
     public int movingSpeed;
     public int frameCount;
     public int frameDelay;
+    public Texture[] walkingU,walkingD,walkingR,walkingL=new Texture[3];
 
     public Entity(){
         frameCount=0;
