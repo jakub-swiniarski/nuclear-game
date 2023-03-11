@@ -44,7 +44,7 @@ public class NuclearGame extends ApplicationAdapter {
 		world = new World(new Vector2(0,0),false);
 
 		//font
-		generator = new FreeTypeFontGenerator(Gdx.files.internal("com-hel.otf"));
+		generator = new FreeTypeFontGenerator(Gdx.files.internal("fonts/com-hel.otf"));
 		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		parameter.size = 24;
 		font24 = generator.generateFont(parameter);
