@@ -44,20 +44,24 @@ public class Player extends Entity{
         }
         if(Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
             rect.y += movingSpeed * Gdx.graphics.getDeltaTime();
-            frameDelay++;
-            if(frameDelay%3==0) {
-                frameCount++;
-                if(frameCount>=3) frameCount=0;
-                img=walkingU[frameCount];
+            if(!(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))) {
+                frameDelay++;
+                if(frameDelay%3==0) {
+                    frameCount++;
+                    if(frameCount>=3) frameCount=0;
+                    img=walkingU[frameCount];
+                }
             }
         }
         else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)  && !Gdx.input.isKeyPressed(Input.Keys.UP)) {
             rect.y -= movingSpeed * Gdx.graphics.getDeltaTime();
-            frameDelay++;
-            if(frameDelay%3==0) {
-                frameCount++;
-                if(frameCount>=3) frameCount=0;
-                img=walkingD[frameCount];
+            if(!(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))){
+                frameDelay++;
+                if(frameDelay%3==0) {
+                    frameCount++;
+                    if(frameCount>=3) frameCount=0;
+                    img=walkingD[frameCount];
+                }
             }
         }
     }
