@@ -1,5 +1,6 @@
 package com.nucleargame;
 
+import box2dLight.RayHandler;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -23,6 +24,7 @@ public class NuclearGame extends ApplicationAdapter {
 	OrthographicCamera worldCam;
 	World world;
 	Stage stage;
+	RayHandler rayHandler;
 	
 	@Override
 	public void create () {
@@ -46,6 +48,10 @@ public class NuclearGame extends ApplicationAdapter {
 		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		parameter.size = 24;
 		font24 = generator.generateFont(parameter);
+
+		//lightning
+		rayHandler = new RayHandler(world);
+		rayHandler.setCombinedMatrix(player.cam.combined);
 	}
 
 	@Override
@@ -55,6 +61,14 @@ public class NuclearGame extends ApplicationAdapter {
 		player.cam.position.set(player.rect.x+player.rect.width/2,player.rect.y+player.rect.height/2,0);
 		player.cam.update();
 
+		//not affected by light, hud
+		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
+		batch.begin();
+		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
+		batch.end();
+
+		//rayHandler.updateAndRender();
+
 		//affected by light
 		batch.begin();
 		for(int i=0; i<20; i++) {
@@ -63,12 +77,6 @@ public class NuclearGame extends ApplicationAdapter {
 			}
 		}
 		batch.draw(player.img, player.rect.x, player.rect.y);
-		batch.end();
-
-		//not affected by light, hud
-		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
-		batch.begin();
-		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
 		batch.end();
 
 		player.checkForInput();
@@ -87,5 +95,6 @@ public class NuclearGame extends ApplicationAdapter {
 				grass[i][j].img.dispose();
 			}
 		}
+		rayHandler.dispose();
 	}
 }
