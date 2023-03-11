@@ -1,4 +1,4 @@
-package com.nucleargame.classes.floor;
+package com.nucleargame.classes.tiles;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
