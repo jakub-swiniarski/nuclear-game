@@ -44,7 +44,7 @@ public class NuclearGame extends ApplicationAdapter {
 		world = new World(new Vector2(0,0),false);
 
 		//font
-		generator = new FreeTypeFontGenerator(Gdx.files.internal("font.otf"));
+		generator = new FreeTypeFontGenerator(Gdx.files.internal("com-hel.otf"));
 		parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		parameter.size = 24;
 		font24 = generator.generateFont(parameter);
@@ -61,15 +61,8 @@ public class NuclearGame extends ApplicationAdapter {
 		player.cam.position.set(player.rect.x+player.rect.width/2,player.rect.y+player.rect.height/2,0);
 		player.cam.update();
 
-		//not affected by light, hud
-		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
-		batch.begin();
-		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
-		batch.end();
-
-		//rayHandler.updateAndRender();
-
 		//affected by light
+		batch.setProjectionMatrix(player.cam.combined);
 		batch.begin();
 		for(int i=0; i<20; i++) {
 			for(int j=0; j<20; j++) {
@@ -77,6 +70,14 @@ public class NuclearGame extends ApplicationAdapter {
 			}
 		}
 		batch.draw(player.img, player.rect.x, player.rect.y);
+		batch.end();
+
+		//rayHandler.updateAndRender();
+
+		//not affected by light, hud
+		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
+		batch.begin();
+		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
 		batch.end();
 
 		player.checkForInput();
