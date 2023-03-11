@@ -85,18 +85,17 @@ public class NuclearGame extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
-		//! łatwo!
-		//batch.dispose();
-		//player.img.dispose();
-		//generator.dispose();
-		//font24.dispose();
-		//world.dispose();
-		//stage.dispose();
-		//for(int i=0; i<20; i++) {
-			//for(int j=0; j<20; j++) {
-				//grass[i][j].img.dispose();
-			//}
-		//}
-		//rayHandler.dispose();
+		batch.dispose();
+		player.img.dispose();
+		generator.dispose();
+		font24.dispose();
+		world.dispose();
+		stage.dispose();
+		for(int i=0; i<20; i++) {
+			for(int j=0; j<20; j++) {
+				grass[i][j].img.dispose();
+			}
+		}
+		rayHandler.dispose();
 	}
 }
