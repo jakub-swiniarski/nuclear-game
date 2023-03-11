@@ -66,7 +66,12 @@ public class NuclearGame extends ApplicationAdapter {
 		batch.begin();
 		for(int i=0; i<20; i++) {
 			for(int j=0; j<20; j++) {
-				batch.draw(grass[i][j].img,grass[i][j].rect.x,grass[i][j].rect.y);
+				if(grass[i][j].rect.x+grass[i][j].rect.width>=player.cam.position.x-800 &&
+				grass[i][j].rect.x<=player.cam.position.x+800 &&
+				grass[i][j].rect.y+grass[i][j].rect.height>=player.cam.position.y-450 &&
+				grass[i][j].rect.y<=player.cam.position.y+450){
+					batch.draw(grass[i][j].img,grass[i][j].rect.x,grass[i][j].rect.y);
+				}
 			}
 		}
 		batch.draw(player.img, player.rect.x, player.rect.y);
