@@ -30,7 +30,7 @@ public class Player extends Entity{
             if(frameDelay%3==0) {
                 frameCount++;
                 if(frameCount>=3) frameCount=0;
-                img=walkingU[frameCount];
+                img=walkingL[frameCount];
             }
         }
         else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)  && !Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
