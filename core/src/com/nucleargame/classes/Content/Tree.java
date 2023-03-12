@@ -3,7 +3,7 @@ package com.nucleargame.classes.Content;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-public class Tree extends WorldContent{
+public class Tree extends Content {
     public Tree(){
         id=1;
         img=new Texture(Gdx.files.internal("content/tree.png"));

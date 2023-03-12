@@ -4,12 +4,12 @@ import com.badlogic.gdx.graphics.Texture;
 
 import java.awt.*;
 
-public class WorldContent {
+public class Content {
     public Rectangle rect;
     public Texture img;
     public int id;
 
-    public WorldContent(){
+    public Content(){
         id=0;
         rect=new Rectangle();
         rect.x=9999;
