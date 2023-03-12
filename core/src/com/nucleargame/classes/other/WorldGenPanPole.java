@@ -2,8 +2,13 @@ package com.nucleargame.classes.other;
 
 public class WorldGenPanPole {
     public int width,height;
+    public int[][] world;
 
+    public void playerInput(){
+        //world gen settings
+    }
     public void generate(){
+        world=new int[width][height];
         //2d array of block ids
         //the actual tiles will be generated in the main game class using the previously generated array
         //trees and ores will be generated in the main game class
