@@ -13,5 +13,7 @@ public class WorldGenPanPole {
         //the actual tiles will be generated in the main game class using the previously generated array
         //trees and ores will be generated in the main game class
         //each grass tile will have a chance to generate a tree (stone tiles will generate ores)
+
+        //2d array of objects such as trees and ores
     }
 }
