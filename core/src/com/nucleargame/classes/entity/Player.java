@@ -21,7 +21,7 @@ public class Player extends Entity{
         rect.x=0;
         rect.y=0;
         movingSpeed=400;
-        cam = new OrthographicCamera(1600,900);
+        cam = new OrthographicCamera(1920,1080);
     }
     public void checkForInput(){
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {

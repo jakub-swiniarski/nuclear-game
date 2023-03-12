@@ -21,7 +21,6 @@ public class NuclearGame extends ApplicationAdapter {
 	BitmapFont font24;
 	Player player;
 	Grass[][] grass = new Grass[20][20];
-	OrthographicCamera worldCam;
 	World world;
 	Stage stage;
 	RayHandler rayHandler;
@@ -29,8 +28,6 @@ public class NuclearGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		worldCam = new OrthographicCamera(1600,900);
-		worldCam.position.set(0,0, 0);
 		player=new Player();
 		for(int i=0; i<20; i++) {
 			for(int j=0; j<20; j++) {
@@ -66,10 +63,10 @@ public class NuclearGame extends ApplicationAdapter {
 		batch.begin();
 		for(int i=0; i<20; i++) {
 			for(int j=0; j<20; j++) {
-				if(grass[i][j].rect.x+grass[i][j].rect.width>=player.cam.position.x-800 &&
-				grass[i][j].rect.x<=player.cam.position.x+800 &&
-				grass[i][j].rect.y+grass[i][j].rect.height>=player.cam.position.y-450 &&
-				grass[i][j].rect.y<=player.cam.position.y+450){
+				if(grass[i][j].rect.x+grass[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
+				grass[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
+				grass[i][j].rect.y+grass[i][j].rect.height>=player.cam.position.y-(player.cam.viewportHeight/2) &&
+				grass[i][j].rect.y<=player.cam.position.y+(player.cam.viewportHeight/2)){
 					batch.draw(grass[i][j].img,grass[i][j].rect.x,grass[i][j].rect.y);
 				}
 			}
