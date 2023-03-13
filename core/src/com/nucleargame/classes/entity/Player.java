@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Player extends Entity{
     public OrthographicCamera cam;
+    public float camZoom;
     public Player(){
+        camZoom=1;
         hp=100;
         img = new Texture(Gdx.files.internal("player/walkingD/0.png"));
         for(int i=0; i<3; i++){
@@ -21,9 +23,16 @@ public class Player extends Entity{
         rect.x=0;
         rect.y=0;
         movingSpeed=400;
-        cam = new OrthographicCamera(1920,1080);
+        cam = new OrthographicCamera(1920*camZoom,1080*camZoom);
+    }
+    public void resetCamResolution(){
+        if(camZoom<0.3f) camZoom=0.3f;
+        if(camZoom>3f) camZoom=3f;
+        cam.viewportWidth=1920*camZoom;
+        cam.viewportHeight=1080*camZoom;
     }
     public void checkForInput(){
+        //movement
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             rect.x -= movingSpeed * Gdx.graphics.getDeltaTime();
             frameDelay++;
@@ -63,6 +72,16 @@ public class Player extends Entity{
                     img=walkingD[frameCount];
                 }
             }
+        }
+
+        //camera zoom
+        if(Gdx.input.isKeyPressed(Input.Keys.I)) {
+            camZoom-=0.05f;
+            resetCamResolution();
+        }
+        else if(Gdx.input.isKeyPressed(Input.Keys.O)) {
+            camZoom+=0.05f;
+            resetCamResolution();
         }
     }
 }

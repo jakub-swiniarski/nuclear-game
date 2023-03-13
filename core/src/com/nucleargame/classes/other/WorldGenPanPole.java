@@ -6,8 +6,8 @@ public class WorldGenPanPole {
     public int[][] content;
 
     public WorldGenPanPole(){
-        width=80;
-        height=45;
+        width=16;
+        height=9;
     }
     /*public void playerInput(){
         //world gen settings
