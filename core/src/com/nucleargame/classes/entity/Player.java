@@ -27,7 +27,7 @@ public class Player extends Entity{
     }
     public void resetCamResolution(){
         if(camZoom<0.3f) camZoom=0.3f;
-        //if(camZoom>3f) camZoom=3f;
+        if(camZoom>3f) camZoom=3f;
         cam.viewportWidth=1920*camZoom;
         cam.viewportHeight=1080*camZoom;
     }
