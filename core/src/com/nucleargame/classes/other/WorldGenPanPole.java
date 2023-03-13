@@ -6,8 +6,8 @@ public class WorldGenPanPole {
     public int[][] content;
 
     public WorldGenPanPole(){
-        width=160;
-        height=90;
+        width=80;
+        height=45;
     }
     /*public void playerInput(){
         //world gen settings
@@ -18,7 +18,7 @@ public class WorldGenPanPole {
         for(int i=0; i<width; i++){
             for(int j=0; j<height; j++){
                 tile[i][j]=1;
-                if((int)(Math.random() * 10)==0){
+                if((int)(Math.random() * 20)==0){
                     content[i][j]=1;
                 }
             }
