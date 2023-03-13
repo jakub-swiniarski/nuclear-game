@@ -65,8 +65,8 @@ public class NuclearGame extends ApplicationAdapter {
 				grass[i][j].rect.x=i*grass[i][j].rect.width-(worldgen.width/2)*160;
 				grass[i][j].rect.y=j*grass[i][j].rect.height-(worldgen.height/2)*160;
 
-				tree[i][j]=new Tree();
 				if(worldgen.content[i][j]==1){
+					tree[i][j]=new Tree();
 					tree[i][j].rect.x=grass[i][j].rect.x;
 					tree[i][j].rect.y=grass[i][j].rect.y;
 				}
@@ -104,11 +104,13 @@ public class NuclearGame extends ApplicationAdapter {
 		}
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=worldgen.height-1; j>0; j--) {
-				if(tree[i][j].rect.x+tree[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
-						tree[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
-						tree[i][j].rect.y+tree[i][j].rect.height>=player.cam.position.y-(player.cam.viewportHeight/2) &&
-						tree[i][j].rect.y<=player.cam.position.y+(player.cam.viewportHeight/2))
-					batch.draw(tree[i][j].imgTrunk,tree[i][j].rect.x,tree[i][j].rect.y);
+				if(worldgen.content[i][j]==1){
+					if(tree[i][j].rect.x+tree[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
+							tree[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
+							tree[i][j].rect.y+tree[i][j].rect.height>=player.cam.position.y-(player.cam.viewportHeight/2) &&
+							tree[i][j].rect.y<=player.cam.position.y+(player.cam.viewportHeight/2))
+						batch.draw(tree[i][j].imgTrunk,tree[i][j].rect.x,tree[i][j].rect.y);
+				}
 			}
 		}
 
@@ -116,11 +118,13 @@ public class NuclearGame extends ApplicationAdapter {
 
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=worldgen.height-1; j>0; j--) {
-				if(tree[i][j].rect.x+tree[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
-						tree[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
-						tree[i][j].rect.y+tree[i][j].rect.height>=player.cam.position.y-(player.cam.viewportHeight/2) &&
-						tree[i][j].rect.y<=player.cam.position.y+(player.cam.viewportHeight/2))
-					batch.draw(tree[i][j].imgCrown,tree[i][j].rect.x,tree[i][j].rect.y+200);
+				if(worldgen.content[i][j]==1){
+					if(tree[i][j].rect.x+tree[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
+							tree[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
+							tree[i][j].rect.y+tree[i][j].rect.height>=player.cam.position.y-(player.cam.viewportHeight/2) &&
+							tree[i][j].rect.y<=player.cam.position.y+(player.cam.viewportHeight/2))
+						batch.draw(tree[i][j].imgCrown,tree[i][j].rect.x,tree[i][j].rect.y+200);
+				}
 			}
 		}
 		batch.end();
