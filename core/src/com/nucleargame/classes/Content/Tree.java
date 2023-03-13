@@ -9,7 +9,7 @@ public class Tree extends Content {
         id=1;
         img=new Texture(Gdx.files.internal("content/tree.png"));
         imgCrown=new Texture(Gdx.files.internal("content/tree-crown.png"));
-        imgTrunk=new Texture(Gdx.files.internal("content/tree-trunk.png"));
+        imgTrunk=new Texture(Gdx.files.internal("content/tree-trunk.png")); //COLLISIONS ONLY WITH THE TRUNK, COPY FROM DUNGEON GAME
         rect.width=360;
         rect.height=480;
     }
