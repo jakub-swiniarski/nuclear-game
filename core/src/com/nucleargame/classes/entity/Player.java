@@ -5,12 +5,17 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
+import java.awt.*;
+
 public class Player extends Entity{
+    public static Rectangle rect;
+    public static Texture img;
     public OrthographicCamera cam;
     public float camZoom;
     public Player(){
         camZoom=1;
         hp=100;
+        rect=new Rectangle();
         img = new Texture(Gdx.files.internal("player/walkingD/0.png"));
         for(int i=0; i<3; i++){
             walkingR[i]=new Texture(Gdx.files.internal("player/walkingR/"+i+".png"));
