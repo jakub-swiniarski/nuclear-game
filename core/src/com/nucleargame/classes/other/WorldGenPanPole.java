@@ -29,5 +29,7 @@ public class WorldGenPanPole {
         //each grass tile will have a chance to generate a tree (stone tiles will generate ores)
 
         //2d array of objects such as trees and ores
+
+        //player spawn region (do not spawn trees, structures, etc)
     }
 }
