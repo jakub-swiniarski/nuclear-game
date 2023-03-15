@@ -31,5 +31,6 @@ public class WorldGenPanPole {
         //2d array of objects such as trees and ores
 
         //player spawn region (do not spawn trees, structures, etc)
+        //biomes
     }
 }
