@@ -93,5 +93,6 @@ public class Player extends Entity{
             camZoom+=0.05f;
             resetCamResolution();
         }
+        light.setPosition(rect.x+rect.width/2,rect.y+rect.height/2);
     }
 }

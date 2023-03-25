@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.nucleargame.classes.Content.Tree;
 import com.nucleargame.classes.entity.Player;
+import com.nucleargame.classes.items.RawUranium;
 import com.nucleargame.classes.other.WorldGenPanPole;
 import com.nucleargame.classes.tiles.Grass;
 
@@ -29,6 +30,7 @@ public class NuclearGame extends ApplicationAdapter {
 	Grass[][] grass;
 	Tree[][] tree;
 	WorldGenPanPole worldgen;
+	RawUranium uran;
 	
 	@Override
 	public void create () {
@@ -47,7 +49,7 @@ public class NuclearGame extends ApplicationAdapter {
 		//lightning
 		rayHandler = new RayHandler(world);
 		rayHandler.setCombinedMatrix(player.cam.combined);
-		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0);
+		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0	);
 
 		//world generation
 		worldgen=new WorldGenPanPole();
@@ -67,6 +69,12 @@ public class NuclearGame extends ApplicationAdapter {
 				}
 			}
 		}
+
+		//items
+		uran=new RawUranium();
+		uran.rect.x=200;
+		uran.rect.y=0;
+		uran.light = new PointLight(rayHandler,50, Color.GREEN,250,9999,9999);
 	}
 
 	@Override
@@ -102,6 +110,9 @@ public class NuclearGame extends ApplicationAdapter {
 		}
 
 		batch.draw(player.img, player.rect.x, player.rect.y);
+		batch.draw(uran.img,uran.rect.x,uran.rect.y);
+		rayHandler.setCombinedMatrix(player.cam.combined);
+		uran.light.setPosition(uran.rect.x+uran.rect.width/2,uran.rect.y+uran.rect.height/2);
 
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=worldgen.height-1; j>0; j--) {
@@ -147,5 +158,7 @@ public class NuclearGame extends ApplicationAdapter {
 		}
 		rayHandler.dispose();
 		player.light.dispose();
+		uran.img.dispose();
+		uran.light.dispose();
 	}
 }
