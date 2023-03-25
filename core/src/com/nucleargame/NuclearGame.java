@@ -1,8 +1,10 @@
 package com.nucleargame;
 
+import box2dLight.PointLight;
 import box2dLight.RayHandler;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
@@ -21,7 +23,6 @@ public class NuclearGame extends ApplicationAdapter {
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
 	BitmapFont font24;
 	Player player;
-	//Grass[][] grass = new Grass[20][20];
 	World world;
 	Stage stage;
 	RayHandler rayHandler;
@@ -33,13 +34,6 @@ public class NuclearGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		player=new Player();
-		/*for(int i=0; i<20; i++) {
-			for(int j=0; j<20; j++) {
-				grass[i][j]=new Grass();
-				grass[i][j].rect.x=i*grass[i][j].rect.width-1420;
-				grass[i][j].rect.y=j*grass[i][j].rect.height-1300;
-			}
-		}*/
 
 		stage = new Stage();
 		world = new World(new Vector2(0,0),false);
@@ -53,6 +47,7 @@ public class NuclearGame extends ApplicationAdapter {
 		//lightning
 		rayHandler = new RayHandler(world);
 		rayHandler.setCombinedMatrix(player.cam.combined);
+		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0);
 
 		//world generation
 		worldgen=new WorldGenPanPole();
@@ -84,15 +79,6 @@ public class NuclearGame extends ApplicationAdapter {
 		//affected by light
 		batch.setProjectionMatrix(player.cam.combined);
 		batch.begin();
-		/*for(int i=0; i<20; i++) {
-			for(int j=0; j<20; j++) {
-				if(grass[i][j].rect.x+grass[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
-				grass[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
-				grass[i][j].rect.y+grass[i][j].rect.height>=player.cam.position.y-(player.cam.viewportHeight/2) &&
-				grass[i][j].rect.y<=player.cam.position.y+(player.cam.viewportHeight/2)) 
-					batch.draw(grass[i][j].img,grass[i][j].rect.x,grass[i][j].rect.y);
-			}
-		}*/
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=0; j<worldgen.height; j++) {
 				if(grass[i][j].rect.x+grass[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
@@ -130,7 +116,7 @@ public class NuclearGame extends ApplicationAdapter {
 		}
 		batch.end();
 
-		//rayHandler.updateAndRender();
+		rayHandler.updateAndRender();
 
 		//not affected by light, hud
 		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
@@ -149,11 +135,6 @@ public class NuclearGame extends ApplicationAdapter {
 		font24.dispose();
 		world.dispose();
 		stage.dispose();
-		/*for(int i=0; i<20; i++) {
-			for(int j=0; j<20; j++) {
-				grass[i][j].img.dispose();
-			}
-		}*/
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=0; j<worldgen.height; j++) {
 				grass[i][j].img.dispose();
@@ -165,5 +146,6 @@ public class NuclearGame extends ApplicationAdapter {
 			}
 		}
 		rayHandler.dispose();
+		player.light.dispose();
 	}
 }
