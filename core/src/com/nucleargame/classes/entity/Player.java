@@ -1,7 +1,9 @@
 package com.nucleargame.classes.entity;
 
+import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 
@@ -12,7 +14,10 @@ public class Player extends Entity{
     public static Texture img;
     public OrthographicCamera cam;
     public float camZoom;
+    public static Sound geigerCounterSound;
+    public static PointLight light;
     public Player(){
+        geigerCounterSound = Gdx.audio.newSound(Gdx.files.internal("sounds/geiger-counter.mp3"));
         camZoom=1;
         hp=100;
         rect=new Rectangle();
