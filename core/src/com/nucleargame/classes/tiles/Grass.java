@@ -10,7 +10,13 @@ public class Grass extends Tile {
     public Grass(){
         id=1;
         //set random number for random grass
-        int random = MathUtils.random.nextInt(9);
+        int random = MathUtils.random.nextInt(3);
+        //if 0 generate again
+        if(random == 0)
+        {
+            random = 1;
+        }
+        
         img = new Texture(Gdx.files.internal("tiles/grass/grass"+ random +".png"));
         rect.x=0;
         rect.y=0;
