@@ -12,6 +12,7 @@ import java.awt.*;
 public class Player extends Entity{
     public static Rectangle rect;
     public static Texture img;
+    public static Texture imgDead;
     public OrthographicCamera cam;
     public float camZoom;
     public static Sound geigerCounterSound;
@@ -19,6 +20,7 @@ public class Player extends Entity{
     public static PointLight light;
     public static int hp;
     public Player(){
+        imgDead=new Texture(Gdx.files.internal("player/gravestone.png"));
         hp=100;
         geigerCounterDelay=0;
         geigerCounterSound = Gdx.audio.newSound(Gdx.files.internal("sounds/geiger-counter.mp3"));
@@ -97,6 +99,10 @@ public class Player extends Entity{
             camZoom+=0.05f;
             resetCamResolution();
         }
+
         light.setPosition(rect.x+rect.width/2,rect.y+rect.height/2);
+        if(hp<=0){
+            img=imgDead;
+        }
     }
 }

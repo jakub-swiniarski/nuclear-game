@@ -50,7 +50,7 @@ public class NuclearGame extends ApplicationAdapter {
 		//lightning
 		rayHandler = new RayHandler(world);
 		rayHandler.setCombinedMatrix(player.cam.combined);
-		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0	); //during day increase distance
+		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0	); //during day increase the distance (5000?)
 
 		//world generation
 		worldgen=new WorldGenPanPole();
@@ -110,10 +110,10 @@ public class NuclearGame extends ApplicationAdapter {
 			}
 		}
 
-		batch.draw(player.img, player.rect.x, player.rect.y);
 		batch.draw(uran.img,uran.rect.x,uran.rect.y);
 		rayHandler.setCombinedMatrix(player.cam.combined);
 		uran.light.setPosition(uran.rect.x+uran.rect.width/2,uran.rect.y+uran.rect.height/2);
+		batch.draw(player.img, player.rect.x, player.rect.y);
 
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=worldgen.height-1; j>0; j--) {

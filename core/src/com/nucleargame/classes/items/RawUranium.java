@@ -44,7 +44,9 @@ public class RawUranium extends Item {
             }
         }
 
-        //slowly lose hp
+        if(Player.hp<0){
+            Player.hp=0;
+        }
         Player.geigerCounterDelay++;
     }
 }
