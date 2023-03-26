@@ -1,2 +1,3 @@
 # nuclear-game
-bob i pan pole
+ha ha uran.
+i know your ip 💀
