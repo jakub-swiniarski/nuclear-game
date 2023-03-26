@@ -49,7 +49,7 @@ public class NuclearGame extends ApplicationAdapter {
 		//lightning
 		rayHandler = new RayHandler(world);
 		rayHandler.setCombinedMatrix(player.cam.combined);
-		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0	);
+		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0	); //during day increase distance
 
 		//world generation
 		worldgen=new WorldGenPanPole();
@@ -72,8 +72,8 @@ public class NuclearGame extends ApplicationAdapter {
 
 		//items
 		uran=new RawUranium();
-		uran.rect.x=200;
-		uran.rect.y=0;
+		uran.rect.x=player.rect.x+1000;
+		uran.rect.y=player.rect.y+1000;
 		uran.light = new PointLight(rayHandler,50, Color.GREEN,250,9999,9999);
 	}
 
@@ -136,6 +136,7 @@ public class NuclearGame extends ApplicationAdapter {
 		batch.end();
 
 		player.checkForInput();
+		uran.checkForProximity();
 	}
 	
 	@Override
