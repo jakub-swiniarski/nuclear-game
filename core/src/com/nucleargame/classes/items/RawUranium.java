@@ -22,19 +22,29 @@ public class RawUranium extends Item {
         if(dist<=20){
             if(Player.geigerCounterDelay%2==0){
                 Player.geigerCounterSound.play(1.0f);
+                if(Player.geigerCounterDelay%16==0){
+                    Player.hp-=1;
+                }
             }
         }
         else if(dist<=30){
             if(Player.geigerCounterDelay%5==0){
                 Player.geigerCounterSound.play(1.0f);
+                if(Player.geigerCounterDelay%40==0){
+                    Player.hp-=1;
+                }
             }
         }
         else if(dist<=40){
             if(Player.geigerCounterDelay%15==0){
                 Player.geigerCounterSound.play(1.0f);
+                if(Player.geigerCounterDelay%120==0){
+                    Player.hp-=1;
+                }
             }
         }
 
+        //slowly lose hp
         Player.geigerCounterDelay++;
     }
 }

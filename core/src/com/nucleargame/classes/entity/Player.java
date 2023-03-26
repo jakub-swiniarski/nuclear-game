@@ -17,7 +17,9 @@ public class Player extends Entity{
     public static Sound geigerCounterSound;
     public static int geigerCounterDelay;
     public static PointLight light;
+    public static int hp;
     public Player(){
+        hp=100;
         geigerCounterDelay=0;
         geigerCounterSound = Gdx.audio.newSound(Gdx.files.internal("sounds/geiger-counter.mp3"));
         camZoom=1;

@@ -134,6 +134,7 @@ public class NuclearGame extends ApplicationAdapter {
 		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
 		batch.begin();
 		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
+		font24.draw(batch, "HP: "+player.hp,755,605);
 		batch.end();
 
 		player.checkForInput();
