@@ -19,7 +19,9 @@ public class Player extends Entity{
     public static int geigerCounterDelay;
     public static PointLight light;
     public static int hp;
+    public boolean allowedToMove;
     public Player(){
+        allowedToMove=true;
         imgDead=new Texture(Gdx.files.internal("player/gravestone.png"));
         hp=100;
         geigerCounterDelay=0;
@@ -49,7 +51,7 @@ public class Player extends Entity{
     }
     public void checkForInput(){
         //movement
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT) && !Gdx.input.isKeyPressed(Input.Keys.RIGHT) && allowedToMove) {
             rect.x -= movingSpeed * Gdx.graphics.getDeltaTime();
             frameDelay++;
             if(frameDelay%5==0) {
@@ -58,7 +60,7 @@ public class Player extends Entity{
                 img=walkingL[frameCount];
             }
         }
-        else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)  && !Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+        else if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)  && !Gdx.input.isKeyPressed(Input.Keys.LEFT) && allowedToMove) {
             rect.x += movingSpeed * Gdx.graphics.getDeltaTime();
             frameDelay++;
             if(frameDelay%5==0) {
@@ -67,7 +69,7 @@ public class Player extends Entity{
                 img=walkingR[frameCount];
             }
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+        if(Gdx.input.isKeyPressed(Input.Keys.UP) && !Gdx.input.isKeyPressed(Input.Keys.DOWN) && allowedToMove) {
             rect.y += movingSpeed * Gdx.graphics.getDeltaTime();
             if(!(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))) {
                 frameDelay++;
@@ -78,7 +80,7 @@ public class Player extends Entity{
                 }
             }
         }
-        else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)  && !Gdx.input.isKeyPressed(Input.Keys.UP)) {
+        else if(Gdx.input.isKeyPressed(Input.Keys.DOWN)  && !Gdx.input.isKeyPressed(Input.Keys.UP) && allowedToMove) {
             rect.y -= movingSpeed * Gdx.graphics.getDeltaTime();
             if(!(Gdx.input.isKeyPressed(Input.Keys.LEFT) || Gdx.input.isKeyPressed(Input.Keys.RIGHT))){
                 frameDelay++;
@@ -102,6 +104,7 @@ public class Player extends Entity{
 
         light.setPosition(rect.x+rect.width/2,rect.y+rect.height/2);
         if(hp<=0){
+            allowedToMove=false;
             img=imgDead;
         }
     }
