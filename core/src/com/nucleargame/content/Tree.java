@@ -15,7 +15,7 @@ public class Tree extends Content {
         rect.height=480;
     }
 
-    public void collisionCheck(){   //glitchy 💀
+    public void collisionCheck(){   //glitchy 💀, create a 2nd rect for a smaller hitbox, USE .OVERLAPS(), IMPORT RECS FROM BADLOGIC ONLY
         if(Player.rect.y+ Player.rect.height>=rect.y && Player.rect.y<=rect.y+rect.height-240){
             if(Player.rect.x<=rect.x+rect.width-140 && Player.rect.x>=rect.x+(rect.width-140)/2) Player.rect.x = (int)rect.x + (int)rect.width - 140;
             if(Player.rect.x+Player.rect.width>=rect.x+80 && Player.rect.x+Player.rect.width<=rect.x+(rect.width+80)/2) Player.rect.x = (int)rect.x - Player.rect.width + 80;
