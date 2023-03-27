@@ -1,4 +1,4 @@
-package com.nucleargame.classes.other;
+package com.nucleargame.other;
 
 public class WorldGenPanPole {
     public int width,height;

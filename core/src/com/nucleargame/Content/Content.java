@@ -1,7 +1,7 @@
-package com.nucleargame.classes.Content;
+package com.nucleargame.Content;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.nucleargame.classes.entity.Player;
+import com.nucleargame.entity.Player;
 
 import java.awt.*;
 

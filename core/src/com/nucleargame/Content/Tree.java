@@ -1,8 +1,8 @@
-package com.nucleargame.classes.Content;
+package com.nucleargame.Content;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.nucleargame.classes.entity.Player;
+import com.nucleargame.entity.Player;
 
 public class Tree extends Content {
     public static Texture imgCrown,imgTrunk;

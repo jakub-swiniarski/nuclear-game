@@ -1,9 +1,9 @@
-package com.nucleargame.classes.items;
+package com.nucleargame.items;
 
 import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.nucleargame.classes.entity.Player;
+import com.nucleargame.entity.Player;
 
 public class RawUranium extends Item {
     public PointLight light;

@@ -12,10 +12,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.nucleargame.classes.Content.Tree;
-import com.nucleargame.classes.entity.Player;
-import com.nucleargame.classes.items.RawUranium;
-import com.nucleargame.classes.other.WorldGenPanPole;
+import com.nucleargame.Content.Tree;
+import com.nucleargame.entity.Player;
+import com.nucleargame.items.RawUranium;
+import com.nucleargame.other.WorldGenPanPole;
 import com.nucleargame.classes.tiles.Grass;
 
 public class NuclearGame extends ApplicationAdapter {
