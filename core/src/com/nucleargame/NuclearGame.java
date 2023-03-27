@@ -16,7 +16,7 @@ import com.nucleargame.Content.Tree;
 import com.nucleargame.entity.Player;
 import com.nucleargame.items.RawUranium;
 import com.nucleargame.other.WorldGenPanPole;
-import com.nucleargame.classes.tiles.Grass;
+import com.nucleargame.tiles.Grass;
 
 public class NuclearGame extends ApplicationAdapter {
 	SpriteBatch batch;
