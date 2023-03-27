@@ -16,8 +16,8 @@ public class RawUranium extends Item {
     }
     public void checkForProximity(){
         //calculate distance
-        distX=Math.abs((int)rect.x- Player.rect.x);
-        distY=Math.abs((int)rect.y- Player.rect.y);
+        distX=Math.abs((int)rect.x- (int)Player.rect.x);
+        distY=Math.abs((int)rect.y- (int)Player.rect.y);
         dist=(int)Math.sqrt(distX+distY);
 
         if(dist<=20){

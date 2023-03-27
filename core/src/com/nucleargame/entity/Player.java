@@ -6,8 +6,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-
-import java.awt.*;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Player extends Entity{
     public static Rectangle rect;
