@@ -18,6 +18,7 @@ import com.nucleargame.items.RawUranium;
 import com.nucleargame.other.WorldGenPanPole;
 import com.nucleargame.tiles.Grass;
 import com.nucleargame.ui.Heart;
+import com.nucleargame.ui.RadiationWarning;
 
 public class NuclearGame extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -33,6 +34,7 @@ public class NuclearGame extends ApplicationAdapter {
 	WorldGenPanPole worldgen;
 	RawUranium uran;
 	Heart heart;
+	RadiationWarning radWar;
 	
 	@Override
 	public void create () {
@@ -80,6 +82,7 @@ public class NuclearGame extends ApplicationAdapter {
 
 		//ui
 		heart=new Heart();
+		radWar=new RadiationWarning();
 	}
 
 	@Override
@@ -134,12 +137,13 @@ public class NuclearGame extends ApplicationAdapter {
 
 		rayHandler.updateAndRender();
 
-		//not affected by light, hud
+		//not affected by light, ui
 		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
 		batch.begin();
 		batch.draw(heart.img, heart.rect.x,heart.rect.y);
+		if(radWar.visible) batch.draw(radWar.img,radWar.rect.x,radWar.rect.y);
 		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
-		font24.draw(batch, "HP: "+player.hp,755,605);
+		font24.draw(batch, "HP: "+player.hp,80,880);
 		batch.end();
 
 		player.checkForInput();
@@ -177,5 +181,6 @@ public class NuclearGame extends ApplicationAdapter {
 
 		//ui
 		heart.img.dispose();
+		radWar.img.dispose();
 	}
 }

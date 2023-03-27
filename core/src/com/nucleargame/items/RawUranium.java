@@ -4,6 +4,7 @@ import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.nucleargame.entity.Player;
+import com.nucleargame.ui.RadiationWarning;
 
 public class RawUranium extends Item {
     public PointLight light;
@@ -25,6 +26,7 @@ public class RawUranium extends Item {
                 if(Player.geigerCounterDelay%16==0){
                     Player.hp--;
                 }
+                RadiationWarning.visible=true;
             }
         }
         else if(dist<=30){
@@ -33,6 +35,7 @@ public class RawUranium extends Item {
                 if(Player.geigerCounterDelay%40==0){
                     Player.hp--;
                 }
+                RadiationWarning.visible=true;
             }
         }
         else if(dist<=40){
@@ -42,6 +45,10 @@ public class RawUranium extends Item {
                     Player.hp--;
                 }
             }
+            RadiationWarning.visible=true;
+        }
+        else{
+            RadiationWarning.visible=false;
         }
 
         if(Player.hp<0){
