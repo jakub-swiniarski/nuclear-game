@@ -82,6 +82,8 @@ public class NuclearGame extends ApplicationAdapter {
 
 		//ui
 		heart=new Heart();
+		heart.rect.x = player.hp /100;
+		heart.rect.y = player.hp /100;
 		radWar=new RadiationWarning();
 	}
 
