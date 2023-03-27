@@ -1,8 +1,7 @@
 package com.nucleargame.entity;
 
 import com.badlogic.gdx.graphics.Texture;
-
-import java.awt.*;
+import com.badlogic.gdx.math.Rectangle;
 
 public class Entity {
     public Rectangle rect;

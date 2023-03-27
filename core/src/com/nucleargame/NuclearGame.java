@@ -12,11 +12,12 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.nucleargame.Content.Tree;
+import com.nucleargame.content.Tree;
 import com.nucleargame.entity.Player;
 import com.nucleargame.items.RawUranium;
 import com.nucleargame.other.WorldGenPanPole;
 import com.nucleargame.tiles.Grass;
+import com.nucleargame.ui.Heart;
 
 public class NuclearGame extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -31,6 +32,7 @@ public class NuclearGame extends ApplicationAdapter {
 	Tree[][] tree;
 	WorldGenPanPole worldgen;
 	RawUranium uran;
+	Heart heart;
 	
 	@Override
 	public void create () {
@@ -75,6 +77,9 @@ public class NuclearGame extends ApplicationAdapter {
 		uran.rect.x=player.rect.x+1000;
 		uran.rect.y=player.rect.y+1000;
 		uran.light = new PointLight(rayHandler,50, Color.GREEN,250,9999,9999);
+
+		//ui
+		heart=new Heart();
 	}
 
 	@Override
@@ -132,6 +137,7 @@ public class NuclearGame extends ApplicationAdapter {
 		//not affected by light, hud
 		batch.setProjectionMatrix(stage.getBatch().getProjectionMatrix());
 		batch.begin();
+		batch.draw(heart.img, heart.rect.x,heart.rect.y);
 		font24.draw(batch, "FPS: "+Gdx.graphics.getFramesPerSecond(), 5, 20);
 		font24.draw(batch, "HP: "+player.hp,755,605);
 		batch.end();
@@ -143,11 +149,9 @@ public class NuclearGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+
+		//world
 		player.img.dispose();
-		generator.dispose();
-		font24.dispose();
-		world.dispose();
-		stage.dispose();
 		for(int i=0; i<worldgen.width; i++) {
 			for(int j=0; j<worldgen.height; j++) {
 				grass[i][j].img.dispose();
@@ -158,9 +162,20 @@ public class NuclearGame extends ApplicationAdapter {
 				}
 			}
 		}
+		uran.img.dispose();
+		world.dispose();
+		stage.dispose();
+
+		//fonts
+		generator.dispose();
+		font24.dispose();
+
+		//light
 		rayHandler.dispose();
 		player.light.dispose();
-		uran.img.dispose();
 		uran.light.dispose();
+
+		//ui
+		heart.img.dispose();
 	}
 }
