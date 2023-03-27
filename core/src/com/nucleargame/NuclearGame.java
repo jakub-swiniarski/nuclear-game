@@ -19,7 +19,6 @@ import com.nucleargame.classes.other.WorldGenPanPole;
 import com.nucleargame.classes.tiles.Grass;
 
 public class NuclearGame extends ApplicationAdapter {
-    //! tree collsion is bugy when moving sideways
 	SpriteBatch batch;
 	FreeTypeFontGenerator generator;
 	FreeTypeFontGenerator.FreeTypeFontParameter parameter;
