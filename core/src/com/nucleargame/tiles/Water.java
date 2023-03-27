@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Water extends Tile{
     public Water(){
-        id=1;
+        id=0;
         //add animations later
         img = new Texture(Gdx.files.internal("tiles/water/water1.png"));
     }
