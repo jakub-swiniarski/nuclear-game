@@ -23,7 +23,7 @@ public class RawUranium extends Item {
             if(Player.geigerCounterDelay%2==0){
                 Player.geigerCounterSound.play(1.0f);
                 if(Player.geigerCounterDelay%16==0){
-                    Player.hp-=10;
+                    Player.hp--;
                 }
             }
         }
@@ -31,7 +31,7 @@ public class RawUranium extends Item {
             if(Player.geigerCounterDelay%5==0){
                 Player.geigerCounterSound.play(1.0f);
                 if(Player.geigerCounterDelay%40==0){
-                    Player.hp-=5;
+                    Player.hp--;
                 }
             }
         }
@@ -39,7 +39,7 @@ public class RawUranium extends Item {
             if(Player.geigerCounterDelay%15==0){
                 Player.geigerCounterSound.play(1.0f);
                 if(Player.geigerCounterDelay%120==0){
-                    Player.hp-=1;
+                    Player.hp--;
                 }
             }
         }
