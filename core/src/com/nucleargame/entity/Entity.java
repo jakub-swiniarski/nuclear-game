@@ -1,4 +1,4 @@
-package com.nucleargame.classes.entity;
+package com.nucleargame.entity;
 
 import com.badlogic.gdx.graphics.Texture;
 

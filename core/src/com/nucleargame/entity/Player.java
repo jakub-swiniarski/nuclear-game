@@ -1,4 +1,4 @@
-package com.nucleargame.classes.entity;
+package com.nucleargame.entity;
 
 import box2dLight.PointLight;
 import com.badlogic.gdx.Gdx;
