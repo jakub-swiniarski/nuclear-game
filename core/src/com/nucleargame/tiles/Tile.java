@@ -1,8 +1,8 @@
 package com.nucleargame.tiles;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 
-import java.awt.*;
 
 public class Tile {
     public Rectangle rect;
