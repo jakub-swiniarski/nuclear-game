@@ -10,7 +10,6 @@ public class Tile {
     public int id;
 
     public Tile(){
-        id=0;
         rect=new Rectangle();
         rect.width=160;
         rect.height=160;
