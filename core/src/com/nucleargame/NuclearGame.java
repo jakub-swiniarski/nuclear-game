@@ -136,28 +136,28 @@ public class NuclearGame extends ApplicationAdapter {
 		stoneCount=0;
 		for(int i=0; i<20; i++) {
 			for(int j=0; j<20; j++) {
-				if(tile[i][j]==0){
+				if(tile[j][i]==0){
 					water[waterCount]=new Water();
 					water[waterCount].rect.x=i*160;
-					water[waterCount].rect.y=j*160;
+					water[waterCount].rect.y=3200-j*160;
 					waterCount++;
 				}
-				if(tile[i][j]==1){
+				if(tile[j][i]==1){
 					grass[grassCount]=new Grass();
 					grass[grassCount].rect.x=i*160;
-					grass[grassCount].rect.y=j*160;
+					grass[grassCount].rect.y=3200-j*160;
 					grassCount++;
 				}
-				if(tile[i][j]==2){
+				if(tile[j][i]==2){
 					sand[sandCount]=new Sand();
 					sand[sandCount].rect.x=i*160;
-					sand[sandCount].rect.y=j*160;
+					sand[sandCount].rect.y=3200-j*160;
 					sandCount++;
 				}
-				if(tile[i][j]==3){
+				if(tile[j][i]==3){
 					stone[stoneCount]=new Stone();
 					stone[stoneCount].rect.x=i*160;
-					stone[stoneCount].rect.y=j*160;
+					stone[stoneCount].rect.y=3200-j*160;
 					stoneCount++;
 				}
 			}
