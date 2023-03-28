@@ -17,6 +17,9 @@ import com.nucleargame.entity.Player;
 import com.nucleargame.items.RawUranium;
 import com.nucleargame.other.WorldGenPanPole;
 import com.nucleargame.tiles.Grass;
+import com.nucleargame.tiles.Sand;
+import com.nucleargame.tiles.Stone;
+import com.nucleargame.tiles.Water;
 import com.nucleargame.ui.Heart;
 import com.nucleargame.ui.RadiationWarning;
 
@@ -29,13 +32,45 @@ public class NuclearGame extends ApplicationAdapter {
 	World world;
 	Stage stage;
 	RayHandler rayHandler;
-	Grass[][] grass;
-	Tree[][] tree;
+	//Grass[][] grass;
+	//Tree[][] tree;
 	WorldGenPanPole worldgen;
 	RawUranium uran;
 	Heart heart;
 	RadiationWarning radWar;
-	
+	int tile[][]={
+			{0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,0},
+			{0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0},
+			{0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0},
+			{0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0},
+			{0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0},
+			{0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+
+			{2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3},
+			{0,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,0},
+			{0,0,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,0,0},
+			{0,0,0,2,2,2,2,2,2,2,3,3,3,3,3,3,3,0,0,0},
+			{0,0,0,0,2,2,2,2,2,2,3,3,3,3,3,3,0,0,0,0},
+			{0,0,0,0,0,2,2,2,2,2,3,3,3,3,3,0,0,0,0,0},
+			{0,0,0,0,0,0,2,2,2,2,3,3,3,3,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,2,2,2,3,3,3,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,2,2,3,3,0,0,0,0,0,0,0,0},
+			{0,0,0,0,0,0,0,0,0,2,3,0,0,0,0,0,0,0,0,0}
+	};
+	int waterCount=0,
+	grassCount=0,
+	sandCount=0,
+	stoneCount=0;
+
+	Water[] water;
+	Grass[] grass;
+	Sand[] sand;
+	Stone[] stone;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -53,10 +88,10 @@ public class NuclearGame extends ApplicationAdapter {
 		//lightning
 		rayHandler = new RayHandler(world);
 		rayHandler.setCombinedMatrix(player.cam.combined);
-		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,1000,0,0	); //during day increase the distance (5000?)
+		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,5000,0,0	); //during night lower to 1000
 
 		//world generation
-		worldgen=new WorldGenPanPole();
+		/*worldgen=new WorldGenPanPole();
 		worldgen.generate();
 		grass=new Grass[worldgen.width][worldgen.height];
 		tree=new Tree[worldgen.width][worldgen.height];
@@ -72,12 +107,70 @@ public class NuclearGame extends ApplicationAdapter {
 					tree[i][j].rect.y=grass[i][j].rect.y;
 				}
 			}
+		}*/
+
+		for(int i=0; i<20; i++) {
+			for(int j=0; j<20; j++) {
+				if(tile[i][j]==0){
+					waterCount++;
+				}
+				if(tile[i][j]==1){
+					grassCount++;
+				}
+				if(tile[i][j]==2){
+					sandCount++;
+				}
+				if(tile[i][j]==3){
+					stoneCount++;
+				}
+			}
 		}
+		water=new Water[waterCount];
+		grass=new Grass[grassCount];
+		sand=new Sand[sandCount];
+		stone=new Stone[stoneCount];
+		//reuse the variables for initializing
+		waterCount=0;
+		grassCount=0;
+		sandCount=0;
+		stoneCount=0;
+		for(int i=0; i<20; i++) {
+			for(int j=0; j<20; j++) {
+				if(tile[i][j]==0){
+					water[waterCount]=new Water();
+					water[waterCount].rect.x=i*160;
+					water[waterCount].rect.y=j*160;
+					waterCount++;
+				}
+				if(tile[i][j]==1){
+					grass[grassCount]=new Grass();
+					grass[grassCount].rect.x=i*160;
+					grass[grassCount].rect.y=j*160;
+					grassCount++;
+				}
+				if(tile[i][j]==2){
+					sand[sandCount]=new Sand();
+					sand[sandCount].rect.x=i*160;
+					sand[sandCount].rect.y=j*160;
+					sandCount++;
+				}
+				if(tile[i][j]==3){
+					stone[stoneCount]=new Stone();
+					stone[stoneCount].rect.x=i*160;
+					stone[stoneCount].rect.y=j*160;
+					stoneCount++;
+				}
+			}
+		}
+
+		//put the player in the middle
+		player.rect.x=1600;
+		player.rect.y=1600;
 
 		//items
 		uran=new RawUranium();
-		uran.rect.x=player.rect.x+1000;
-		uran.rect.y=player.rect.y+1000;
+		uran.rect.x=player.rect.x+800;
+		uran.rect.y=player.rect.y+800;
 		uran.light = new PointLight(rayHandler,50, Color.GREEN,250,9999,9999);
 
 		//ui
@@ -95,7 +188,7 @@ public class NuclearGame extends ApplicationAdapter {
 		//affected by light
 		batch.setProjectionMatrix(player.cam.combined);
 		batch.begin();
-		for(int i=0; i<worldgen.width; i++) {
+		/*for(int i=0; i<worldgen.width; i++) {
 			for(int j=0; j<worldgen.height; j++) {
 				if(grass[i][j].rect.x+grass[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
 						grass[i][j].rect.x<=player.cam.position.x+(player.cam.viewportWidth/2) &&
@@ -115,6 +208,19 @@ public class NuclearGame extends ApplicationAdapter {
 					tree[i][j].collisionCheck();
 				}
 			}
+		}*/
+
+		for(int i=0; i<waterCount; i++) {
+				batch.draw(water[i].img,water[i].rect.x,water[i].rect.y);
+		}
+		for(int i=0; i<sandCount; i++) {
+				batch.draw(sand[i].img,sand[i].rect.x,sand[i].rect.y);
+		}
+		for(int i=0; i<grassCount; i++) {
+				batch.draw(grass[i].img,grass[i].rect.x,grass[i].rect.y);
+		}
+		for(int i=0; i<stoneCount; i++) {
+				batch.draw(stone[i].img,stone[i].rect.x,stone[i].rect.y);
 		}
 
 		batch.draw(uran.img,uran.rect.x,uran.rect.y);
@@ -122,7 +228,7 @@ public class NuclearGame extends ApplicationAdapter {
 		uran.light.setPosition(uran.rect.x+uran.rect.width/2,uran.rect.y+uran.rect.height/2);
 		batch.draw(player.img, player.rect.x, player.rect.y);
 
-		for(int i=0; i<worldgen.width; i++) {
+		/*for(int i=0; i<worldgen.width; i++) {
 			for(int j=worldgen.height-1; j>0; j--) {
 				if(worldgen.content[i][j]==1){
 					if(tree[i][j].rect.x+tree[i][j].rect.width>=player.cam.position.x-(player.cam.viewportWidth/2) &&
@@ -132,7 +238,7 @@ public class NuclearGame extends ApplicationAdapter {
 						batch.draw(tree[i][j].imgCrown,tree[i][j].rect.x,tree[i][j].rect.y+200);
 				}
 			}
-		}
+		}*/
 		batch.end();
 
 		rayHandler.updateAndRender();
@@ -149,14 +255,25 @@ public class NuclearGame extends ApplicationAdapter {
 		player.checkForInput();
 		uran.checkForProximity();
 	}
-	
+
 	@Override
 	public void dispose () {
 		batch.dispose();
 
 		//world
-		player.img.dispose();
-		for(int i=0; i<worldgen.width; i++) {
+		for(int i=0; i<waterCount; i++) {
+			water[i].img.dispose();
+		}
+		for(int i=0; i<grassCount; i++) {
+			grass[i].img.dispose();
+		}
+		for(int i=0; i<sandCount; i++) {
+			sand[i].img.dispose();
+		}
+		for(int i=0; i<stoneCount; i++) {
+			stone[i].img.dispose();
+		}
+		/*for(int i=0; i<worldgen.width; i++) {
 			for(int j=0; j<worldgen.height; j++) {
 				grass[i][j].img.dispose();
 				if(worldgen.content[i][j]==1){
@@ -165,10 +282,13 @@ public class NuclearGame extends ApplicationAdapter {
 					tree[i][j].imgCrown.dispose();
 				}
 			}
-		}
+		}*/
 		uran.img.dispose();
 		world.dispose();
 		stage.dispose();
+
+		//entities
+		player.img.dispose();
 
 		//fonts
 		generator.dispose();
