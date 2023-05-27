@@ -2,7 +2,6 @@ package com.nucleargame.tiles;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.nucleargame.tiles.Tile;
 
 public class Grass extends Tile {
     public int random;
