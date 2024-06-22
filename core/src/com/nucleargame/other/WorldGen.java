@@ -1,11 +1,11 @@
 package com.nucleargame.other;
 
-public class WorldGenPanPole {
+public class WorldGen {
     public int width,height;
     public int[][] tile;
     public int[][] content;
 
-    public WorldGenPanPole(){
+    public WorldGen(){
         width=32;
         height=18;
     }

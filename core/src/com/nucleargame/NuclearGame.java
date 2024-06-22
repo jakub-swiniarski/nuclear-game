@@ -14,7 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.nucleargame.entity.Player;
 import com.nucleargame.items.RawUranium;
-import com.nucleargame.other.WorldGenPanPole;
+import com.nucleargame.other.WorldGen;
 import com.nucleargame.tiles.Grass;
 import com.nucleargame.tiles.Sand;
 import com.nucleargame.tiles.Stone;
@@ -33,7 +33,7 @@ public class NuclearGame extends ApplicationAdapter {
 	RayHandler rayHandler;
 	//Grass[][] grass;
 	//Tree[][] tree;
-	WorldGenPanPole worldgen;
+	WorldGen worldgen;
 	RawUranium uran;
 	Heart heart;
 	RadiationWarning radWar;
@@ -90,7 +90,7 @@ public class NuclearGame extends ApplicationAdapter {
 		player.light = new PointLight(rayHandler,50, Color.DARK_GRAY,5000,0,0	); //during night lower to 1000
 
 		//world generation
-		/*worldgen=new WorldGenPanPole();
+		/*worldgen=new WorldGen();
 		worldgen.generate();
 		grass=new Grass[worldgen.width][worldgen.height];
 		tree=new Tree[worldgen.width][worldgen.height];
